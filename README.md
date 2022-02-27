@@ -9,23 +9,30 @@
 
 ### Data Preparation
 
-- Read `crypto_data.csv` into Pandas. The dataset was obtained from [CryptoCompare](https://min-api.cryptocompare.com/data/all/coinlist).
-- Discard all cryptocurrencies that are not being traded. In other words, filter for currencies that are currently being traded. Once you have done this, drop the `IsTrading` column from the dataframe.
-- Remove all rows that have at least one null value.
-- Filter for cryptocurrencies that have been mined. That is, the total coins mined should be greater than zero.
 - In order for your dataset to be comprehensible to a machine learning algorithm, its data should be numeric. Since the coin names do not contribute to the analysis of the data, delete the `CoinName` from the original dataframe.
-- Your next step in data preparation is to convert the remaining features with text values, `Algorithm` and `ProofType`, into numerical data. To accomplish this task, use Pandas to create dummy variables. Examine the number of rows and columns of your dataset now. How did they change?
+- Convert the remaining features with text values, `Algorithm` and `ProofType`, into numerical data. 
 - Standardize your dataset so that columns that contain larger values do not unduly influence the outcome.
 
 ### Dimensionality Reduction
 
-- Creating dummy variables above dramatically increased the number of features in your dataset. Perform dimensionality reduction with PCA. Rather than specify the number of principal components when you instantiate the PCA model, it is possible to state the desired **explained variance**. For example, say that a dataset has 100 features. Using `PCA(n_components=0.99)` creates a model that will preserve approximately 99% of the explained variance, whether that means reducing the dataset to 80 principal components or 3. For this project, preserve 90% of the explained variance in dimensionality reduction. How did the number of the features change?
-- Next, further reduce the dataset dimensions with t-SNE and visually inspect the results. In order to accomplish this task, run t-SNE on the principal components: the output of the PCA transformation. Then create a scatter plot of the t-SNE output. Observe whether there are distinct clusters or not.
+- Creating dummy variables above dramatically increased the number of features in your dataset. Perform dimensionality reduction with PCA. For this project, preserve 90% of the explained variance in dimensionality reduction.
+- Next, further reduce the dataset dimensions with t-SNE and visually inspect the results. Then create a scatter plot of the t-SNE output. Observe whether there are distinct clusters or not.
 
 ### Cluster Analysis with k-Means
 
-- Create an elbow plot to identify the best number of clusters. Use a for-loop to determine the inertia for each `k` between 1 through 10. Determine, if possible, where the elbow of the plot is, and at which value of `k` it appears.
+- Create an elbow plot to identify the best number of clusters. Determine, if possible, where the elbow of the plot is, and at which value of `k` it appears.
 
-### Recommendation
+## Summary
 
-- Based on your findings, make a brief (1-2 sentences) recommendation to your clients. Can the cryptocurrencies be clustered together? If so, into how many clusters?
+To tackle this project of determining if cryptocurrencies can be clustered for the purposes of investing, I started with data cleanup. I removed any currencies that were not currently trading, as well as those that had null values in any of the columns. I also filtered for coins that had been mined. 
+
+
+The next step was to do some basic formatting, removing unnecessary columns and converting all fields to numeric values. I also used get_dummies to fill in any missing fields and standardized the data to nullify outliers.
+
+
+Next, I used PCA to reduce the dimensionality to 90% of the explained variance, then t-SNE to reduce it further to a learning rate of 250. To test, I used a scatter plot to see if any clusters were observable. At a glance, there do appear to be some clusters. 
+
+
+Using k-means, I analyzed the clusters further. The resulting graph is a fairly straight downward diagonal line, suggesting that there likely aren't any true clusters. This could perhaps be refined by removing additional outliers to get closer to the 1-2 clusters that were visible in the scatter plot.
+
+
