@@ -26,13 +26,17 @@
 
 To tackle this project of determining if cryptocurrencies can be clustered for the purposes of investing, I started with data cleanup. I removed any currencies that were not currently trading, as well as those that had null values in any of the columns. I also filtered for coins that had been mined. 
 
+![image](https://user-images.githubusercontent.com/81889411/155866251-4147b5e9-7460-4a15-aee3-1d1e0037205b.png)
 
 The next step was to do some basic formatting, removing unnecessary columns and converting all fields to numeric values. I also used get_dummies to fill in any missing fields and standardized the data to nullify outliers.
 
+![image](https://user-images.githubusercontent.com/81889411/155866269-ff50eb9d-23e8-4a09-8566-c50e2e7943c0.png)
 
 Next, I used PCA to reduce the dimensionality to 90% of the explained variance, then t-SNE to reduce it further to a learning rate of 250. To test, I used a scatter plot to see if any clusters were observable. At a glance, there do appear to be some clusters. 
 
+![image](https://user-images.githubusercontent.com/81889411/155866278-fc7982b6-1068-4002-8d3e-1c1f62b368d1.png)
 
 Using k-means, I analyzed the clusters further. The resulting graph is a fairly straight downward diagonal line, suggesting that there likely aren't any true clusters. This could perhaps be refined by removing additional outliers to get closer to the 1-2 clusters that were visible in the scatter plot.
 
+![image](https://user-images.githubusercontent.com/81889411/155866291-0a32cddb-aaea-4fc4-801e-be71f8684825.png)
 
