@@ -24,7 +24,7 @@
 
 ## Summary
 
-To tackle this project of determining if cryptocurrencies can be clustered for the purposes of investing, I started with data cleanup. I removed any currencies that were not currently trading, as well as those that had null values in any of the columns. I also filtered for coins that had been mined. 
+To tackle this project of determining if cryptocurrencies can be clustered for the purposes of investing, I started with data cleanup. With the dataset starting at 1,252 rows, I removed any currencies that were not currently trading, as well as those that had null values in any of the columns. I also filtered for coins that had been mined. The final dataset I had to analyze was 532 rows. 
 
 ![image](https://user-images.githubusercontent.com/81889411/155866251-4147b5e9-7460-4a15-aee3-1d1e0037205b.png)
 
